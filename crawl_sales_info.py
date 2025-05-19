@@ -102,7 +102,9 @@ def process_basic_info(soup, search_owner=True):
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("data/merged_sales.csv")
+    PDF_FOLDER = "data/2019"
+    PDF_FILENAME = "merged_sales.csv"
+    data = pd.read_csv(f"{PDF_FOLDER}/{PDF_FILENAME}")
 
     # Create a list to store all the new information
     new_data = []
@@ -154,7 +156,7 @@ if __name__ == "__main__":
     new_df = pd.DataFrame(new_data)
 
     # Save to CSV
-    new_df.to_csv("data/enriched_sales_data.csv", index=False)
+    new_df.to_csv(f"{PDF_FOLDER}/enriched_{PDF_FILENAME}", index=False)
     print("Data processing complete. Saved to enriched_sales_data.csv")
 
     # get_sales_info(2101833138)
