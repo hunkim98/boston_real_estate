@@ -27,14 +27,14 @@ def merge_rows(lines):
 
 def parse_row(row):
     pattern = re.compile(
-        r"(?P<parcel>\d{2}[‐-]\d{5}[‐-]\d{3})\s+"
+        r"(?P<parcel>\d{2}-\d{5}-\d{3})\s+"
         r"(?P<street_no>\d+)\s+"
-        r"(?P<street_name>.+?)\s+"
-        r"(?P<unit>\d+)\s+"
+        r"(?P<street_name>[A-Z\s]+?)\s+"
+        r"(?P<unit>\S+)\s+"
         r"(?P<sale_date>\d{1,2}/\d{1,2}/\d{4})\s+"
-        r"(?P<sale_price>[\d,]+)\s*\$\s+"
+        r"\$\s*(?P<sale_price>[\d,]+)\s+"
         r"(?P<living_area>[\d,]+)\s+"
-        r"(?P<price_per_sf>[\d.]+)\s*$"
+        r"(?P<price_per_sf>[\d.]+)"
     )
 
     match = pattern.match(row)
